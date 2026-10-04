@@ -1,55 +1,48 @@
 # Beacon
 
-Beacon helps families and rare-disease communities move from a diagnosis to:
+### *A path forward*
 
-1. a simple overview of the disease,
-2. ranked related-disease research matches,
-3. an evidence-backed treatment research path worth expert review.
+A rare diagnosis can leave a family with more questions than answers. Beacon helps families understand what is known, discover related conditions that may share important biology, and see which research or treatment paths may be worth exploring next.
 
-The demo currently supports:
+## Find the closest research paths for a rare diagnosis
 
-- `SCN2A-related epilepsy`
-- `Noonan syndrome`
+Search for a diagnosis and Beacon turns a complex research landscape into three simple steps:
 
-## Product flow
+### 1. Understand the diagnosis
+See a clear overview of the condition, the gene or pathway involved, and where research currently stands.
 
-### 1. Overview
-Shows the diagnosis in plain language, three high-signal facts, and the current research picture.
+### 2. Discover related diseases
+Beacon finds conditions that may share the same underlying mechanism, symptoms, or disease course — even when the disease names are completely different.
 
-### 2. Matches
-Ranks 2-3 related diseases using a transparent Research Match score:
+Each match includes a simple score and explanation so families can understand **why the connection matters**.
 
-- 35% mechanism similarity
-- 30% symptom similarity
-- 20% variant-effect compatibility
-- 15% disease-course similarity
+### 3. Explore a possible treatment path
+For the strongest matches, Beacon highlights treatment strategies that have been studied in related diseases and shows:
 
-The score is a research-prioritization heuristic, not a clinical probability.
+- what may be relevant to your diagnosis,
+- how strong the supporting evidence is,
+- what may not transfer between the two conditions, and
+- what should be reviewed with a medical or research expert.
 
-### 3. Treatment path
-For the strongest related-disease match, Beacon shows one treatment strategy worth investigating, a research-transfer confidence score, what may carry over, and what must be re-checked by experts.
+## Why Beacon
 
-For SCN2A, the demo path is a sodium-channel-blocking strategy for gain-of-function disease. It is backed by independent evidence in SCN2A and SCN8A and is explicitly gated on variant function.
+Rare-disease research is often scattered across papers, registries, clinical studies, and separate patient communities. Families should not have to become biomedical researchers just to understand what might come next.
 
-## OpenAI's role
+Beacon connects that information into a path that is easier to follow:
 
-OpenAI is used behind the scenes, not as a parent-facing abstract input box.
+**Diagnosis → Related disease → Evidence → Possible treatment path**
 
-The evidence pipeline does this:
+## Evidence you can inspect
 
-`trusted paper / database text -> OpenAI Structured Output -> source-bound graph claim -> human review -> graph dataset`
+Every connection in Beacon can be traced back to the evidence behind it. Families can open the evidence path to see why two diseases were matched and what supports a suggested research direction.
 
-OpenAI extracts structured entities and claims such as:
+Beacon is designed to make complex research understandable without hiding uncertainty. When a connection is weak, incomplete, or needs expert validation, Beacon makes that clear.
 
-- gene
-- functional effect
-- phenotype
-- mechanism
-- study type
-- uncertainty
-- supporting text
+## Built for families who are searching for what comes next
 
-The deterministic application code then calculates Research Match scores and renders the product. OpenAI does not directly decide that a treatment will work.
+A rare diagnosis may be uncommon. The biology behind it may not be.
+
+Beacon helps families find the research, communities, and possibilities that could already be closer than they appear.
 
 ## Run locally
 
@@ -64,55 +57,15 @@ cp .env.example .env
 
 Put your OpenAI API key in `.env`:
 
-```text
+```env
 OPENAI_API_KEY=sk-...
 OPENAI_MODEL=gpt-4o-mini
 ```
 
-Then:
+Then run:
 
 ```bash
 python server.py
 ```
 
-Open:
-
-```text
-http://127.0.0.1:8000
-```
-
-## Model error fix
-
-If an old `.env` contains:
-
-```text
-OPENAI_MODEL=gpt-oss-120b
-```
-
-replace it with:
-
-```text
-OPENAI_MODEL=gpt-4o-mini
-```
-
-`gpt-oss-120b` is not an OpenAI API model ID on this endpoint. The extraction code also falls back to `gpt-4o-mini` when it encounters an invalid configured model.
-
-## Main files
-
-- `index.html` — product UI
-- `styles.css` — product styling
-- `app.js` — deterministic product logic
-- `data/cases.json` — demo diagnosis, match, and treatment-path data
-- `data/sources.json` — evidence metadata
-- `pipeline/openai_extract.py` — OpenAI Structured Outputs extraction
-- `server.py` — local Flask server
-
-## Demo recommendation
-
-Use `SCN2A-related epilepsy` for the main demo. It gives the strongest 30-second reveal:
-
-- SCN8A ranks above Dravet syndrome despite both being sodium-channel epilepsies.
-- The ranking explains the mechanism difference.
-- The product then surfaces a treatment-class research path that is plausible for SCN2A gain-of-function disease but explicitly not transferable to loss-of-function disease.
-
-Use `Noonan syndrome` as the backup search to show that the product generalizes beyond epilepsy.
+Open `http://127.0.0.1:8000` in your browser.
