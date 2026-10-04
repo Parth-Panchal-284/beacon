@@ -2,3 +2,5 @@ openai
 flask
 python-dotenv
 pydantic
+
+gunicorn
