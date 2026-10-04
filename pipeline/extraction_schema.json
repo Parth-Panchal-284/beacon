@@ -1,0 +1,20 @@
+{
+  "name": "rare_disease_evidence_claim",
+  "strict": true,
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "subject": {"type": "string"},
+      "relation": {"type": "string"},
+      "object": {"type": "string"},
+      "evidence_type": {"type": "string"},
+      "functional_effect": {"type": ["string", "null"]},
+      "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+      "source_id": {"type": "string"},
+      "supporting_text": {"type": "string"},
+      "uncertainty": {"type": "string"}
+    },
+    "required": ["subject", "relation", "object", "evidence_type", "functional_effect", "confidence", "source_id", "supporting_text", "uncertainty"]
+  }
+}

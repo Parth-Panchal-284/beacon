@@ -1,0 +1,196 @@
+{
+  "meta": {
+    "name": "Beacon seed research graph",
+    "version": "0.2.0",
+    "generated_for": "HackNation 7 Global AI Hackathon",
+    "disclaimer": "Prototype research-navigation data. Scores are transparent heuristics, not clinical probabilities or medical advice."
+  },
+  "query": {
+    "id": "SCN2A_RD",
+    "label": "SCN2A-related disorder",
+    "gene": "SCN2A",
+    "summary": "A neurodevelopmental disorder spectrum associated with pathogenic SCN2A variants. Functional effect matters: gain-, loss-, and mixed-function variants can map to different phenotype patterns.",
+    "sources": ["PMID:38651838", "PMID:41642117", "PMID:28379373"]
+  },
+  "score_model": {
+    "label": "Research Match Score",
+    "weights": {
+      "mechanism": 0.35,
+      "phenotype": 0.30,
+      "functional_effect": 0.20,
+      "disease_course": 0.15
+    },
+    "note": "Prototype ranking heuristic for research navigation. It is not a validated clinical similarity metric."
+  },
+  "matches": [
+    {
+      "rank": 1,
+      "id": "SCN8A_RD",
+      "label": "SCN8A-related disorder",
+      "gene": "SCN8A",
+      "score": 92,
+      "evidence_confidence": "High",
+      "components": {
+        "mechanism": 96,
+        "phenotype": 88,
+        "functional_effect": 95,
+        "disease_course": 84
+      },
+      "why": "Gain-of-function SCN2A and SCN8A variants can both increase sodium-channel activity and are associated with early developmental epilepsies. Their clinical expression is not identical, so the match is for research collaboration rather than treatment transfer.",
+      "shared_path": [
+        "SCN2A gain of function",
+        "increased sodium-channel activity",
+        "early-onset developmental epilepsy",
+        "SCN8A gain of function"
+      ],
+      "sources": ["PMID:32090326", "PMID:34847423", "PMID:35902765"],
+      "best_opportunity": "Natural-history and registry harmonization",
+      "asset": {
+        "name": "International SCN8A Patient Registry",
+        "type": "Longitudinal patient registry",
+        "description": "A caregiver-reported longitudinal registry built to improve understanding of the SCN8A disease spectrum and natural history.",
+        "sources": ["PMID:37577282", "SCN8A_REGISTRY"],
+        "reuse": [
+          {"item": "Registry structure", "score": 88, "level": "High", "reason": "A reusable template for longitudinal rare-disease data collection."},
+          {"item": "Natural-history endpoints", "score": 84, "level": "High", "reason": "Seizure and developmental trajectories are relevant across related developmental epilepsies."},
+          {"item": "Genotype / phenotype fields", "score": 86, "level": "High", "reason": "Both disorders benefit from linking variant information to phenotype."},
+          {"item": "Seizure / EEG outcome measures", "score": 78, "level": "Medium", "reason": "Potentially comparable, but exact outcome definitions require expert harmonization."},
+          {"item": "SCN8A-specific biomarkers", "score": 42, "level": "Low", "reason": "Channel- and disease-specific biology may not transfer."},
+          {"item": "Therapeutic assumptions", "score": 18, "level": "Do not transfer", "reason": "A research match does not establish treatment equivalence or clinical guidance."}
+        ]
+      },
+      "milestone": {
+        "title": "Cross-disease natural-history harmonization",
+        "goal": "Create a shared core of natural-history measures that can support future trial readiness while preserving disease-specific fields.",
+        "why_now": "Both communities study sodium-channel neurodevelopmental disease, and SCN8A already has mature longitudinal registry infrastructure.",
+        "steps": [
+          "Compare SCN2A DRAGONFLY and SCN8A registry schemas.",
+          "Identify common seizure, developmental, and genotype/phenotype fields.",
+          "Have domain experts mark fields as shared, adaptable, or disease-specific.",
+          "Pilot a harmonized core dataset for cross-disease natural-history analysis."
+        ],
+        "needs_validation": [
+          "Whether the relevant SCN2A functional subgroup is biologically comparable to the selected SCN8A subgroup.",
+          "Whether endpoint definitions and age windows are sufficiently compatible.",
+          "Whether patient organizations and investigators agree on data governance and consent."
+        ]
+      }
+    },
+    {
+      "rank": 2,
+      "id": "SCN3A_RD",
+      "label": "SCN3A-related neurodevelopmental disorder",
+      "gene": "SCN3A",
+      "score": 86,
+      "evidence_confidence": "Medium-high",
+      "components": {
+        "mechanism": 90,
+        "phenotype": 82,
+        "functional_effect": 92,
+        "disease_course": 78
+      },
+      "why": "Published functional work shows gain-of-function SCN3A variants in early infantile epileptic encephalopathy, and cross-channel studies group gain-of-function SCN2A/SCN3A/SCN8A variants around related early-onset epilepsy biology.",
+      "shared_path": [
+        "SCN2A gain of function",
+        "voltage-gated sodium-channel dysfunction",
+        "neuronal hyperexcitability",
+        "SCN3A gain of function"
+      ],
+      "sources": ["PMID:29466837", "PMID:32090326"],
+      "best_opportunity": "Functional-assay reuse and mechanism validation",
+      "asset": {
+        "name": "Published SCN3A electrophysiology assay designs",
+        "type": "Functional assay methodology",
+        "description": "Patch-clamp approaches used to characterize gain-of-function SCN3A variants can inform how related sodium-channel mechanisms are compared.",
+        "sources": ["PMID:29466837"],
+        "reuse": [
+          {"item": "Patch-clamp assay framework", "score": 91, "level": "High", "reason": "The assay concept directly measures sodium-channel functional effects."},
+          {"item": "Functional-effect vocabulary", "score": 88, "level": "High", "reason": "Gain/loss/mixed-function characterization is central to both disorders."},
+          {"item": "Cell-system protocol", "score": 74, "level": "Medium", "reason": "Protocol structure is reusable, but channel expression and construct details differ."},
+          {"item": "Clinical endpoint set", "score": 51, "level": "Low", "reason": "SCN3A cohorts are smaller and clinical phenotypes are not interchangeable."},
+          {"item": "Therapeutic conclusions", "score": 15, "level": "Do not transfer", "reason": "Functional similarity does not justify cross-disease treatment recommendations."}
+        ]
+      },
+      "milestone": {
+        "title": "Cross-channel functional assay benchmark",
+        "goal": "Create a standardized comparison of functional-effect measurements across SCN2A and SCN3A variants.",
+        "why_now": "The mechanistic overlap is strong, while research infrastructure is thinner than SCN8A, making assay reuse a more defensible first collaboration.",
+        "steps": [
+          "Map assay variables used in SCN2A and SCN3A functional studies.",
+          "Define a shared minimum set of electrophysiology measurements.",
+          "Select representative gain-of-function variants from both genes.",
+          "Use the shared panel to test whether mechanistic similarity holds across variants."
+        ],
+        "needs_validation": [
+          "Cross-laboratory protocol comparability.",
+          "Whether the same cellular model is appropriate for both channels.",
+          "Whether functional similarity predicts clinically useful shared endpoints."
+        ]
+      }
+    },
+    {
+      "rank": 3,
+      "id": "SCN1A_DS",
+      "label": "SCN1A-related Dravet syndrome",
+      "gene": "SCN1A",
+      "score": 67,
+      "evidence_confidence": "High",
+      "components": {
+        "mechanism": 58,
+        "phenotype": 86,
+        "functional_effect": 48,
+        "disease_course": 76
+      },
+      "why": "SCN1A disorders share sodium-channel and epilepsy phenotypes, but classic Dravet syndrome is usually mechanistically different from the SCN2A gain-of-function branch. The prototype therefore ranks it below SCN8A and SCN3A despite strong phenotype overlap.",
+      "shared_path": [
+        "SCN2A epilepsy phenotype",
+        "sodium-channel disease family",
+        "overlapping seizure / developmental outcomes",
+        "SCN1A Dravet syndrome"
+      ],
+      "sources": ["GENEREVIEWS_SCN1A", "PMID:32090326"],
+      "best_opportunity": "Endpoint benchmarking only — mechanism caution",
+      "asset": {
+        "name": "Mature Dravet natural-history and outcome-measure ecosystem",
+        "type": "Outcome-measure reference",
+        "description": "A mature disease area can provide examples of seizure and developmental outcome measurement, but mechanism-specific conclusions should remain separate.",
+        "sources": ["GENEREVIEWS_SCN1A"],
+        "reuse": [
+          {"item": "General seizure outcome concepts", "score": 84, "level": "High", "reason": "Outcome-measure design can be informative across epilepsy studies."},
+          {"item": "Caregiver-reported burden measures", "score": 81, "level": "High", "reason": "Patient-centered measurement frameworks can inform other rare epilepsies."},
+          {"item": "Natural-history study structure", "score": 76, "level": "Medium", "reason": "Study architecture may be adaptable while disease-specific variables remain separate."},
+          {"item": "Mechanism-specific assumptions", "score": 32, "level": "Low", "reason": "Classic Dravet biology differs materially from SCN2A gain-of-function disease."},
+          {"item": "Therapeutic conclusions", "score": 8, "level": "Do not transfer", "reason": "Mechanistic differences make direct treatment transfer unsafe and scientifically unsupported."}
+        ]
+      },
+      "milestone": {
+        "title": "Outcome-measure benchmarking",
+        "goal": "Use mature Dravet study design as a reference for measurement quality, not as a biological or therapeutic proxy.",
+        "why_now": "The phenotype overlap makes outcome design informative, while the mechanism mismatch is an important guardrail the atlas should expose.",
+        "steps": [
+          "Identify generalizable seizure and caregiver-reported outcome concepts.",
+          "Separate disease-agnostic measurement methods from SCN1A-specific biology.",
+          "Compare candidate endpoints against existing SCN2A natural-history studies.",
+          "Retain only endpoints validated as meaningful in SCN2A."
+        ],
+        "needs_validation": [
+          "Whether each candidate endpoint is sensitive to change in SCN2A.",
+          "Whether age and developmental-stage distributions are comparable.",
+          "No therapeutic inference should be carried across the mechanistic mismatch."
+        ]
+      }
+    }
+  ],
+  "existing_scn2a_assets": [
+    {
+      "name": "DRAGONFLY Study",
+      "type": "Global SCN2A patient registry",
+      "source": "SCN2A_DRAGONFLY"
+    },
+    {
+      "name": "SCN2A natural-history and trial-readiness work",
+      "type": "Observational research infrastructure",
+      "source": "SCN2A_PUBLICATIONS"
+    }
+  ]
+}

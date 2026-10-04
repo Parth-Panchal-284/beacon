@@ -1,0 +1,166 @@
+{
+  "cases": [
+    {
+      "id": "scn2a",
+      "aliases": ["scn2a", "scn2a related epilepsy", "scn2a-related epilepsy", "scn2a related disorder", "scn2a-related disorder", "genetic epilepsy"],
+      "display_name": "SCN2A-related epilepsy",
+      "subtitle": "Rare genetic epilepsy linked to changes in the SCN2A sodium-channel gene",
+      "overview": "SCN2A-related disorders can look very different from one child to another. A key research clue is whether the variant increases or reduces sodium-channel activity, because that can change which related diseases and treatment strategies are most relevant.",
+      "stats": [
+        {"value": "SCN2A", "label": "Primary gene"},
+        {"value": "Rare genetic epilepsy", "label": "Condition type"},
+        {"value": "Emerging", "label": "Targeted-therapy stage"}
+      ],
+      "current_landscape": [
+        "Seizure treatments exist, but there is no approved therapy that directly corrects SCN2A itself.",
+        "Gain-of-function and loss-of-function variants can behave differently, so variant function matters.",
+        "Natural-history studies and patient registries are already building trial-readiness data."
+      ],
+      "overview_sources": ["PMID:38651838", "PMID:28379373", "SCN2A_DRAGONFLY"],
+      "matches": [
+        {
+          "rank": 1,
+          "id": "scn8a",
+          "name": "SCN8A-related epilepsy",
+          "gene": "SCN8A",
+          "score": 92,
+          "evidence": "High",
+          "summary": "Both can involve gain-of-function sodium-channel activity and very early epilepsy. This makes SCN8A the closest research match in this demo.",
+          "components": {"Mechanism": 96, "Symptoms": 88, "Variant effect": 95, "Disease course": 84},
+          "path": ["SCN2A", "Gain of function", "Higher sodium activity", "Early epilepsy", "SCN8A"],
+          "sources": ["PMID:32090326", "PMID:38802994", "PMID:35902765"]
+        },
+        {
+          "rank": 2,
+          "id": "scn3a",
+          "name": "SCN3A-related epilepsy",
+          "gene": "SCN3A",
+          "score": 86,
+          "evidence": "Medium-high",
+          "summary": "SCN3A can share the same broad sodium-channel gain-of-function pattern, but the clinical evidence base is smaller than for SCN8A.",
+          "components": {"Mechanism": 90, "Symptoms": 82, "Variant effect": 92, "Disease course": 78},
+          "path": ["SCN2A", "Gain of function", "Sodium-channel dysfunction", "Early epilepsy", "SCN3A"],
+          "sources": ["PMID:29466837", "PMID:32090326"]
+        },
+        {
+          "rank": 3,
+          "id": "dravet",
+          "name": "Dravet syndrome",
+          "gene": "SCN1A",
+          "score": 67,
+          "evidence": "High",
+          "summary": "Dravet syndrome shares epilepsy symptoms and the sodium-channel family, but its usual mechanism differs. That lowers the match despite the similar symptoms.",
+          "components": {"Mechanism": 58, "Symptoms": 86, "Variant effect": 48, "Disease course": 76},
+          "path": ["SCN2A", "Epilepsy", "Sodium-channel family", "Infant seizures", "SCN1A"],
+          "sources": ["GENEREVIEWS_SCN1A", "PMID:32090326"]
+        }
+      ],
+      "treatment_path": {
+        "title": "Sodium-channel blocking strategy",
+        "from_match": "SCN8A-related epilepsy",
+        "confidence": 82,
+        "confidence_label": "Strong research lead",
+        "summary": "For gain-of-function disease, both SCN2A and SCN8A can involve excessive sodium-channel activity. Published evidence in both disorders supports investigating sodium-channel blocking strategies.",
+        "basis": [
+          {"label": "Shared mechanism", "score": 95},
+          {"label": "Evidence in both diseases", "score": 88},
+          {"label": "Similar early-epilepsy pattern", "score": 82},
+          {"label": "Variant-function certainty", "score": 64}
+        ],
+        "transferable": [
+          "The treatment-class rationale: reduce excessive sodium-channel activity.",
+          "Seizure-response and tolerability outcomes used to evaluate the strategy.",
+          "Trial-design lessons from related sodium-channel disorders."
+        ],
+        "not_transferable": [
+          "A specific medicine or dose for an individual child.",
+          "The strategy if the SCN2A variant is loss-of-function or function is unknown.",
+          "Expected response for a particular patient without specialist review."
+        ],
+        "sources": ["PMID:28379373", "PMID:38802994", "PMID:32090326", "PMID:31904126"],
+        "expert_note": "Expert validation required: confirm the child's variant function and clinical phenotype before any clinical decision."
+      }
+    },
+    {
+      "id": "noonan",
+      "aliases": ["noonan", "noonan syndrome", "rasopathy"],
+      "display_name": "Noonan syndrome",
+      "subtitle": "A genetic RAS/MAPK pathway disorder affecting development and multiple organ systems",
+      "overview": "Noonan syndrome belongs to a family of disorders called RASopathies. Several differently named syndromes disrupt the same RAS/MAPK growth-signaling pathway, which creates opportunities to compare research and targeted-treatment ideas across diseases.",
+      "stats": [
+        {"value": "RAS/MAPK", "label": "Shared pathway"},
+        {"value": "RASopathy", "label": "Condition family"},
+        {"value": "Symptom-specific", "label": "Current treatment model"}
+      ],
+      "current_landscape": [
+        "Care is usually tailored to the person's specific heart, growth, developmental, or other features.",
+        "No single disease-modifying treatment applies to every person with Noonan syndrome.",
+        "Pathway-targeted therapies are being studied for selected severe RASopathy manifestations."
+      ],
+      "overview_sources": ["PMID:35178568", "PMID:36533679"],
+      "matches": [
+        {
+          "rank": 1,
+          "id": "costello",
+          "name": "Costello syndrome",
+          "gene": "HRAS",
+          "score": 88,
+          "evidence": "High",
+          "summary": "Costello syndrome affects the same RAS/MAPK pathway and shares several developmental and cardiac features with Noonan syndrome.",
+          "components": {"Mechanism": 94, "Symptoms": 84, "Variant effect": 86, "Disease course": 82},
+          "path": ["Noonan", "RAS/MAPK", "Pathway overactivity", "Shared cardiac features", "Costello"],
+          "sources": ["PMID:36533679", "PMID:35178568"]
+        },
+        {
+          "rank": 2,
+          "id": "cfc",
+          "name": "Cardiofaciocutaneous syndrome",
+          "gene": "BRAF / MAP2K1 / MAP2K2",
+          "score": 85,
+          "evidence": "High",
+          "summary": "CFC syndrome is another RASopathy with strong pathway overlap and related developmental and cardiac manifestations.",
+          "components": {"Mechanism": 93, "Symptoms": 80, "Variant effect": 82, "Disease course": 79},
+          "path": ["Noonan", "RAS/MAPK", "MEK/ERK signaling", "Developmental overlap", "CFC"],
+          "sources": ["PMID:36533679", "PMID:35178568"]
+        },
+        {
+          "rank": 3,
+          "id": "nf1",
+          "name": "Neurofibromatosis type 1",
+          "gene": "NF1",
+          "score": 71,
+          "evidence": "High",
+          "summary": "NF1 also alters RAS/MAPK signaling, but its major clinical features differ more substantially from Noonan syndrome.",
+          "components": {"Mechanism": 88, "Symptoms": 58, "Variant effect": 76, "Disease course": 61},
+          "path": ["Noonan", "RAS/MAPK", "RAS signaling", "Shared pathway", "NF1"],
+          "sources": ["PMID:35178568"]
+        }
+      ],
+      "treatment_path": {
+        "title": "MEK-pathway inhibition for severe RASopathy-associated cardiomyopathy",
+        "from_match": "Costello syndrome and related RASopathies",
+        "confidence": 64,
+        "confidence_label": "Promising, limited evidence",
+        "summary": "MEK inhibitors have been explored across several RASopathies for severe hypertrophic cardiomyopathy. The shared pathway provides a rationale, but the evidence is still based on small numbers and specific manifestations.",
+        "basis": [
+          {"label": "Shared pathway", "score": 94},
+          {"label": "Cross-RASopathy reports", "score": 68},
+          {"label": "Similar cardiac phenotype", "score": 72},
+          {"label": "Clinical evidence maturity", "score": 42}
+        ],
+        "transferable": [
+          "The pathway rationale for studying MEK inhibition in severe RASopathy-associated cardiomyopathy.",
+          "Cardiac outcome measures and monitoring approaches used across related syndromes.",
+          "Cross-disease trial-design lessons for small rare-disease populations."
+        ],
+        "not_transferable": [
+          "Using MEK inhibition as a general treatment for Noonan syndrome.",
+          "A specific drug, dose, or duration for an individual patient.",
+          "Evidence from one RASopathy without checking the exact gene, phenotype, and cardiac condition."
+        ],
+        "sources": ["PMID:36533679", "PMID:40460044", "PMID:38432396"],
+        "expert_note": "Expert validation required: this research path is relevant only to selected severe manifestations and requires specialist evaluation."
+      }
+    }
+  ]
+}

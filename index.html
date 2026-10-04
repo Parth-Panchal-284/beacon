@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Beacon — A path forward" />
+  <title>Beacon</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand-row">
+        <span class="brand-mark">B</span>
+        <div>
+          <h1>Beacon</h1>
+          <p>A path forward</p>
+        </div>
+      </div>
+      <span class="status-pill"><span></span> Evidence linked</span>
+    </header>
+
+    <section class="search-hero">
+      <div class="hero-copy">
+        <h2>Find the closest research paths for a rare diagnosis.</h2>
+        <p>Search a diagnosis or gene to see related diseases, why they match, and which treatment ideas are worth investigating.</p>
+      </div>
+      <form id="searchForm" class="search-form">
+        <label for="searchInput">Diagnosis or gene</label>
+        <div class="search-row">
+          <input id="searchInput" value="SCN2A-related epilepsy" autocomplete="off" />
+          <button class="primary" type="submit">Search</button>
+        </div>
+        <div class="examples" aria-label="Example searches">
+          <button type="button" data-example="SCN2A-related epilepsy">SCN2A-related epilepsy</button>
+          <button type="button" data-example="Noonan syndrome">Noonan syndrome</button>
+        </div>
+        <p id="searchMessage" class="helper" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="product" hidden>
+      <nav class="stepper" aria-label="Product sections">
+        <button type="button" class="step active" data-step="1"><span>1</span>Overview</button>
+        <button type="button" class="step" data-step="2"><span>2</span>Matches</button>
+        <button type="button" class="step" data-step="3"><span>3</span>Treatment path</button>
+      </nav>
+
+      <section id="step1" class="stage-panel">
+        <div class="section-heading simple">
+          <div>
+            <p class="section-kicker">Overview</p>
+            <h2 id="overviewTitle"></h2>
+            <p id="overviewSubtitle" class="lede"></p>
+          </div>
+          <button type="button" class="evidence-btn" data-evidence="overview">View evidence</button>
+        </div>
+
+        <div id="overviewStats" class="stat-grid"></div>
+
+        <div class="overview-grid">
+          <article class="content-card overview-main">
+            <h3>What this means</h3>
+            <p id="overviewText" class="overview-text"></p>
+          </article>
+          <article class="content-card">
+            <h3>Current research picture</h3>
+            <ul id="landscapeList" class="plain-list"></ul>
+          </article>
+        </div>
+
+        <div class="action-row">
+          <button type="button" class="primary" data-next="2">Find related diseases</button>
+        </div>
+      </section>
+
+      <section id="step2" class="stage-panel" hidden>
+        <div class="section-heading simple">
+          <div>
+            <p class="section-kicker">Matches</p>
+            <h2>Related disease matches</h2>
+          </div>
+          <button type="button" id="scoreInfoBtn" class="ghost">How is Research Match calculated?</button>
+        </div>
+
+        <div id="matchCards" class="match-grid"></div>
+
+        <div class="selected-match-grid">
+          <article class="content-card selected-summary">
+            <div class="match-detail-head">
+              <div>
+                <p class="section-kicker">Selected match</p>
+                <h3 id="selectedName"></h3>
+              </div>
+              <div class="big-score"><strong id="selectedScore"></strong><span>/100</span></div>
+            </div>
+            <p id="selectedSummary" class="selected-copy"></p>
+            <div id="componentBars" class="component-bars"></div>
+          </article>
+
+          <article class="content-card graph-card">
+            <div class="graph-title-row">
+              <div>
+                <p class="section-kicker">Evidence path</p>
+                <h3 id="graphTitle"></h3>
+              </div>
+              <button type="button" class="evidence-btn" data-evidence="match">View evidence</button>
+            </div>
+            <svg id="graphSvg" viewBox="0 0 760 330" role="img" aria-label="Disease evidence path"></svg>
+          </article>
+        </div>
+
+        <div class="action-row">
+          <button type="button" class="primary" data-next="3">View treatment path</button>
+        </div>
+      </section>
+
+      <section id="step3" class="stage-panel" hidden>
+        <div class="section-heading simple">
+          <div>
+            <p class="section-kicker">Treatment path</p>
+            <h2 id="treatmentTitle"></h2>
+            <p id="treatmentFrom" class="lede"></p>
+          </div>
+          <button type="button" class="evidence-btn" data-evidence="treatment">View evidence</button>
+        </div>
+
+        <div class="treatment-hero content-card">
+          <div class="confidence-panel">
+            <p>Research transfer confidence</p>
+            <div class="confidence-number"><strong id="treatmentConfidence"></strong><span>/100</span></div>
+            <span id="treatmentConfidenceLabel" class="confidence-label"></span>
+          </div>
+          <div class="treatment-summary">
+            <h3>Why this path appears</h3>
+            <p id="treatmentSummary"></p>
+          </div>
+        </div>
+
+        <div class="treatment-grid">
+          <article class="content-card">
+            <h3>Why it may transfer</h3>
+            <div id="treatmentBasis" class="component-bars treatment-bars"></div>
+          </article>
+          <article class="content-card split-card">
+            <div>
+              <h3>What may carry over</h3>
+              <ul id="transferList" class="check-list"></ul>
+            </div>
+            <div>
+              <h3>What must be re-checked</h3>
+              <ul id="noTransferList" class="caution-list"></ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="expert-note">
+          <strong>Expert review required.</strong>
+          <span id="expertNote"></span>
+        </div>
+      </section>
+    </section>
+
+    <aside id="evidenceDrawer" class="drawer" hidden>
+      <div class="drawer-head">
+        <div>
+          <p class="section-kicker">Evidence</p>
+          <h3 id="evidenceTitle">Sources</h3>
+        </div>
+        <button id="closeDrawer" type="button" class="ghost">Close</button>
+      </div>
+      <div id="evidenceBody"></div>
+    </aside>
+
+    <dialog id="scoreDialog">
+      <form method="dialog" class="dialog-card">
+        <div class="dialog-head">
+          <div>
+            <p class="section-kicker">Research Match</p>
+            <h3>How the score is calculated</h3>
+          </div>
+          <button class="ghost" value="cancel">Close</button>
+        </div>
+        <div class="weight-list">
+          <div><span>Mechanism similarity</span><strong>35%</strong></div>
+          <div><span>Symptom similarity</span><strong>30%</strong></div>
+          <div><span>Variant-effect compatibility</span><strong>20%</strong></div>
+          <div><span>Disease-course similarity</span><strong>15%</strong></div>
+        </div>
+        <p class="helper">The score ranks research relevance. It is not a probability that two diseases are the same or that a treatment will work.</p>
+      </form>
+    </dialog>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
