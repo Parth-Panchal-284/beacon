@@ -44,6 +44,10 @@ A rare diagnosis may be uncommon. The biology behind it may not be.
 
 Beacon helps families find the research, communities, and possibilities that could already be closer than they appear.
 
+## Website
+
+[Beacon](https://beacon-zlyj.onrender.com/)
+
 ## Run locally
 
 Python 3.9+ is supported.
